@@ -1,17 +1,17 @@
+import { Box, SimpleGrid } from "@chakra-ui/react"
+import { Card } from "../components/Cards/Feed"
+
+export const Storys = () =>{
+  return(
+    <Box>
+      Hello
+    </Box>
+  )
+}
+
 export const Home = () => (
-  <div className="App">
-    <header className="App-header">
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
-  </div>
+  <SimpleGrid columns='2'>
+    <Card />
+    <Storys />
+  </SimpleGrid>
 )
