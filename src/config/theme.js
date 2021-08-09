@@ -9,7 +9,9 @@ const config = {
 
 const colors = {
   main: {
-    1: '#E2E8F0'
+    1: '#E2E8F0',
+    text: '#1a202c',
+    link: 'red',
   }
 }
 

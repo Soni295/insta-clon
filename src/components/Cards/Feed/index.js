@@ -9,7 +9,8 @@ const publicacion = {
     name: 'example',
     img: 'https://bit.ly/sage-adebayo'
   },
-  img: 'https://bit.ly/sage-adebayo'
+  img: 'https://bit.ly/sage-adebayo',
+  desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ipsa eos dolorum reiciendis. Iure sequi, voluptates velit doloribus reiciendis consequatur debitis dolores nam ab delectus iste error? Minima, necessitatibus nihil.'
 }
 
 export const Card = ({data=publicacion}) => {
@@ -18,17 +19,23 @@ export const Card = ({data=publicacion}) => {
       bg='gray.100'
       boxShadow='l'
       m='auto'
-      borderRadius='xl'
-      minW='400px'
+      borderRadius='8px'
+      w={['350px', '450px', '450px', '600px']}
+      minW='300px'
       maxW='600px'
-      fontSize={['10px', '12px', '16px', '22px']}
+      fontSize={['18px', '18px', '20px', '22px']}
     >
       <HeadCard
         img={data.user.img}
         name={data.user.name}
       />
-      <ImgCard />
-      <BodyCard />
+      <ImgCard
+        img={data.img}
+      />
+      <BodyCard
+        name={data.user.name}
+        desc={data.desc}
+      />
     </Box>
   )
 }

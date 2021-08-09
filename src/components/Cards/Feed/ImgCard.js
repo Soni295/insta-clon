@@ -1,9 +1,10 @@
 import { Box, Image } from "@chakra-ui/react"
 
-export const ImgCard = () => (
+export const ImgCard = ({img}) => (
   <Box>
     <Image
-      src="https://bit.ly/sage-adebayo"
+      m='auto'
+      src={img}
       alt="Segun Adebayo"
     />
   </Box>

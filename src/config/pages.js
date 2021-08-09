@@ -1,6 +1,14 @@
 import {
-  Home
+  Home,
+  Profile
 } from '../pages'
+
+
+const PATHS = {
+  HOME: '/',
+  PROFILE: '/User/:name',
+}
+
 
 class Page {
 	constructor(component, path, exact = true) {
@@ -12,5 +20,6 @@ class Page {
 }
 
 export const pages = [
-  new Page(Home, '/'),
+  new Page(Home, PATHS.HOME),
+  new Page(Profile, PATHS.PROFILE),
 ]
