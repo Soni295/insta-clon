@@ -1,4 +1,5 @@
-import { Box, Text, Image } from "@chakra-ui/react"
+import { Box, Text } from "@chakra-ui/react"
+import { ProfileImagen } from "../../ProfileImagen"
 
 export const HeadCard = ({name, img}) => (
   <Box
@@ -7,11 +8,9 @@ export const HeadCard = ({name, img}) => (
     ml='9px'
     alignItems='center'
   >
-    <Image
-      src={img}
-      alt="Segun Adebayo"
-      borderRadius='full'
-      h='2em'
+    <ProfileImagen
+      size='small'
+      img={img}
     />
     <Text
       as='h3'
