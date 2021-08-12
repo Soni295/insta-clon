@@ -1,0 +1,9 @@
+
+Profile
+  * Agregar presentacion al header profile,
+  * Inbox de mensajes.
+  * Boton de follow.
+  * Agregar Imagen.
+  * agregar lista de publicaciones.
+
+
