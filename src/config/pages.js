@@ -4,7 +4,7 @@ import {
 } from '../pages'
 
 
-const PATHS = {
+export const PATHS = {
   HOME: '/',
   PROFILE: '/User/:name',
 }

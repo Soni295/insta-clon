@@ -25,8 +25,18 @@ const Publications = () => {
 
 export const Home = () => (
   <Grid
-    templateColumns={["repeat(1, 1fr)","repeat(1, 1fr)","repeat(1, 2fr)", "repeat(5, 1fr)"]}
-    bg={['red', 'blue', 'black', 'white']}
+    templateColumns={[
+      "repeat(1, 1fr)",
+      "repeat(1, 1fr)",
+      "repeat(1, 2fr)",
+      "repeat(5, 1fr)"
+    ]}
+    bg={[
+      'red',
+      'blue',
+      'black',
+      'white'
+    ]}
     w='100%'
     h='100%'
   >
