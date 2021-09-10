@@ -1,11 +1,13 @@
 import {
   Home,
-  Profile
+  Profile,
+  LogIn,
 } from '../pages'
 
 export const PATHS = {
   HOME: '/',
   PROFILE: '/User/:name',
+  LOGIN: '/LogIn',
 }
 
 class Page {
@@ -19,5 +21,6 @@ class Page {
 
 export const pages = [
   new Page(Home, PATHS.HOME),
+  new Page(LogIn, PATHS.LOGIN),
   new Page(Profile, PATHS.PROFILE),
 ]
