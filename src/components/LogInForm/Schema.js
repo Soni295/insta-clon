@@ -9,3 +9,8 @@ export const validationSchema = Yup.object({
     .required('password is required')
     .min(6, 'El password debe contener al menos 6 caracteres'),
 })
+
+export const initialValues = {
+  user: '',
+  password: ''
+}

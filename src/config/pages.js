@@ -1,17 +1,11 @@
-import {
-  Home,
-  Profile,
-  LogIn,
-} from '../pages'
+import { PATHS } from './PATHS'
 
-export const PATHS = {
-  HOME: '/',
-  PROFILE: '/User/:name',
-  LOGIN: '/LogIn',
-}
+import { Home } from '../pages/Home'
+import { Profile } from '../pages/Profile'
+import { LogIn } from '../pages/LogIn'
 
 class Page {
-	constructor(component, path, exact = true) {
+	constructor(component, path, exact=true) {
 		this.component = component
 		this.path = path
 		this.key = path

@@ -1,6 +1,7 @@
 import { BrowserRouter } from 'react-router-dom'
-import { Routes } from './config/routes'
 import { Box } from "@chakra-ui/react"
+
+import { Routes } from './config/routes'
 
 export const App = () => (
   <BrowserRouter>

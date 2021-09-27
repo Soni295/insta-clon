@@ -1,16 +1,15 @@
 import { useFormik } from 'formik'
-import { Box } from '@chakra-ui/react';
-import { validationSchema } from './Schema'
-import { InputForm } from '../InputForm'
+import { Box, Button } from '@chakra-ui/react';
 
-const initialValues = {
-  user: '',
-  password: ''
-}
+import { validationSchema, initialValues } from './Schema'
+
+import { InputForm } from '../InputForm'
+import { fetchLogIn } from '../../services/login'
 
 export const LogInForm = () => {
-  const onSubmit = values => {
-    console.log(values)
+
+  const onSubmit = async(values) => {
+    const mmm = await fetchLogIn(values)
   }
 
   const formik = useFormik({initialValues, validationSchema, onSubmit})
@@ -20,7 +19,7 @@ export const LogInForm = () => {
       my='50px'
       mx='30px'
     >
-      <form>
+      <form onSubmit={formik.handleSubmit}>
         <InputForm
           name='user'
           placeholder='User name'
@@ -32,6 +31,14 @@ export const LogInForm = () => {
           type='password'
           formik={formik}
         />
+        <Button
+          type='submit'
+          colorScheme='blue'
+          mt='30px'
+          w='100%'
+        >
+          Log In
+        </Button>
       </form>
     </Box>
   )

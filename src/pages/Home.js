@@ -1,4 +1,5 @@
 import { Grid } from "@chakra-ui/react"
+
 import { Publications } from "../components/Publications"
 
 export const Home = () => (
