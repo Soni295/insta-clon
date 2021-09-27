@@ -1,8 +1,6 @@
-import axios from 'axios'
+//import axios from 'axios'
 
-import { PATHS } from './PATHS'
-
-const main = axios.create({ baseURL: PATHS.main })
+//const main = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL})
 
 export const fetchLogIn = ({user, password}) => {
 

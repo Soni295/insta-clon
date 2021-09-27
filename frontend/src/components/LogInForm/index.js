@@ -4,12 +4,11 @@ import { Box, Button } from '@chakra-ui/react';
 import { validationSchema, initialValues } from './Schema'
 
 import { InputForm } from '../InputForm'
-import { fetchLogIn } from '../../services/login'
 
 export const LogInForm = () => {
 
   const onSubmit = async(values) => {
-    const mmm = await fetchLogIn(values)
+    console.log(values)
   }
 
   const formik = useFormik({initialValues, validationSchema, onSubmit})
