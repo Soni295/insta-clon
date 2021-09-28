@@ -7,8 +7,8 @@ const initialState = {
   error: null
 }
 
-export const counterSlice = createSlice({
-  name: 'counter',
+export const userReducer = createSlice({
+  name: 'userReducer',
   initialState,
   reducers: {},
   extraReducers: {
@@ -25,4 +25,4 @@ export const counterSlice = createSlice({
   }
 })
 
-export default counterSlice.reducer
+export default userReducer.reducer

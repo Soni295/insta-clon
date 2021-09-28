@@ -1,14 +1,17 @@
 import { useFormik } from 'formik'
 import { Box, Button } from '@chakra-ui/react';
 
+import { useDispatch, useSelector } from 'react-redux';
 import { validationSchema, initialValues } from './Schema'
 
 import { InputForm } from '../InputForm'
+import { submitLogIn } from '../../redux/LogIn/reducers'
 
 export const LogInForm = () => {
+  const dispatch = useDispatch();
 
-  const onSubmit = async(values) => {
-    console.log(values)
+  const onSubmit = values => {
+    dispatch(submitLogIn(values))
   }
 
   const formik = useFormik({initialValues, validationSchema, onSubmit})
