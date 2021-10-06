@@ -1,6 +1,5 @@
 import { Router } from 'express'
 import { logIn } from './userCtrl/logIn.js'
-import { getConnection } from '../database/database.js'
 import { USERS } from '../database/tables.js'
 
 import { SqlQuery } from '../database/SqlQuery.js'
