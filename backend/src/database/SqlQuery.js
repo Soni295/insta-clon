@@ -14,11 +14,11 @@ export class SqlQuery {
   select(...columns){
     this.msg = 'SELECT '
     this.msg += setColumns(columns, '*')
-    this.msg += `FROM ${this.table.name}`
+    this.msg += ` FROM ${this.table.name}`
     return this
   }
   where(){
-    this.msg += '\nWHERE'
+    this.msg += ' WHERE'
     return this
   }
   isEqual(table, data){
