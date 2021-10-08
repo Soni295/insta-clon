@@ -8,6 +8,9 @@ import { validationSchema, initialValues } from './Schema'
 import { InputForm } from '../InputForm'
 import { submitLogIn } from '../../redux/LogIn/reducers'
 
+import { PATHS } from '../../config/PATHS'
+import { Redirect } from 'react-router-dom'
+
 export const LogInForm = () => {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state)
@@ -19,11 +22,12 @@ export const LogInForm = () => {
   }
   const mmmm = useCustomToast(label)
 
-  const onSubmit = values => {
-    dispatch(submitLogIn(values))
-  }
-
+  const onSubmit = values => dispatch(submitLogIn(values))
   const formik = useFormik({initialValues, validationSchema, onSubmit})
+
+  if(user.user){
+    return <Redirect to={PATHS.HOME} />
+  }
 
   return(
     <Box

@@ -1,7 +1,16 @@
-import { Route as ReactRoute, Switch } from 'react-router-dom'
+import { Route as ReactRoute, Switch, Redirect } from 'react-router-dom'
 import { pages } from './pages'
+import { PATHS } from './PATHS'
+import { useSelector } from 'react-redux';
 
 export const Route = route => {
+
+  const { user } = useSelector(state => state)
+
+  if(route.needLogged && !user.user){
+    return <Redirect to={PATHS.LOGIN} />
+  }
+
   return(
     <ReactRoute
       path={route.path}

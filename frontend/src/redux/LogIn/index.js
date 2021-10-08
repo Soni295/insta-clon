@@ -3,7 +3,7 @@ import { submitLogIn } from './reducers'
 import { getLocalStorage } from '../../utils/getLocalStorage'
 
 const initialState = {
-  user:  getLocalStorage('user'),
+  user: getLocalStorage('user'),
   status: 'idle',
   error: null
 }
@@ -18,6 +18,7 @@ export const userReducer = createSlice({
     },
     [submitLogIn.fulfilled](state, { payload }){
       state.user = payload.user
+      localStorage.setItem('user', JSON.stringify(payload.user))
       state.status = 'succeeded';
     },
     [submitLogIn.rejected](state, action){
