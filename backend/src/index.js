@@ -2,8 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { route } from './route/index.js'
 
-
-const app = express()
+export const app = express()
 const port = '3001'
 
 app.use(express.urlencoded({extended: false}))

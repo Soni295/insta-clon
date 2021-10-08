@@ -1,23 +1,20 @@
 import { SqlQuery } from '../../database/SqlQuery.js'
 import { USERS } from '../../database/tables.js'
 
-const query = new SqlQuery(USERS)
-  .select('*')
-  .where()
-  .isEqual(USERS.email, 'arturo@hotmail.com')
-
 
 export const logIn = async(req, res) => {
-  const {user, password} = req.body
-  console.log(req.body)
+  const { user, password } = req.body
 
-  const [row] = await query.connection()
+  const [row] = await new SqlQuery(USERS)
+    .select('*')
+    .where()
+    .isEqual(USERS.email, user)
+    .or()
+    .isEqual(USERS.userName, user)
+    .connection()
 
-  console.log(row)
 
-  if(user !== 'admin' || password !== '123456'){
-    return res.status(500).end()
-  }
-
-  return res.status(200).json({title: 'hola', text: 'hola'})
+  return row
+    ? res.status(200).json({msg: 'Login successfully', user})
+    : res.status(404).json({msg: 'Login failed'})
 }
