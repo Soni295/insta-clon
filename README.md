@@ -29,3 +29,14 @@ $ cd database
 $ docker-compose -f docker.yml up
 ```
 
+
+# example
+```js
+
+{
+    user: "arturo",
+    password: "123456"
+}
+
+```
+
