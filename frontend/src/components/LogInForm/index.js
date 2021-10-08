@@ -1,5 +1,6 @@
 import { useFormik } from 'formik'
 import { Box, Button } from '@chakra-ui/react';
+import { useCustomToast } from '../../hooks/useCustomToast';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { validationSchema, initialValues } from './Schema'
@@ -9,6 +10,14 @@ import { submitLogIn } from '../../redux/LogIn/reducers'
 
 export const LogInForm = () => {
   const dispatch = useDispatch();
+  const { user } = useSelector(state => state)
+
+  const label = {
+    state: user,
+    successMsg: 'Login successfully.',
+    errorMsg: 'Your email or password was incorrect.'
+  }
+  const mmmm = useCustomToast(label)
 
   const onSubmit = values => {
     dispatch(submitLogIn(values))
