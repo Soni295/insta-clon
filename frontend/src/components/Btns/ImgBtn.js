@@ -1,33 +1,25 @@
-import { Button, Input } from '@chakra-ui/react';
-import { useState } from 'react';
+import { Button, Input, Box } from '@chakra-ui/react';
 
+import { useSetImg } from '../../hooks/useSetImg';
+import './style.css'
 
-
-
-function getBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
-}
-
-export default getBase64;
-
-export const ImgBtn = () => {
-  const [fileName, setFileName] = useState();
-  const file = true
+export const ImgBtn = ({id, control}) => {
+  const [fileName, handleImg] = useSetImg(id, control)
 
   return(
-    <Button colorScheme={file ? 'red' : 'blue'}>
-      <input
-        type="file"
-        accept="image/png, image/jpeg"
-
-      />
-
-
-    </Button>
+    <Box
+      display='grid'
+    >
+      <Button colorScheme={fileName ? 'red' : 'blue'}>
+        { fileName ? 'Picture selected' : 'Select your picture' }
+        <Input
+          py='30px'
+          name={id}
+          type="file"
+          accept="image/png, image/jpeg"
+          onChange={handleImg}
+        />
+      </Button>
+    </Box>
   )
 }
