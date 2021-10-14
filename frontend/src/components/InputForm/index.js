@@ -1,7 +1,10 @@
 import { Alert, AlertIcon, FormControl, Input } from '@chakra-ui/react'
 
-export const InputForm = ({ type = 'text', placeholder = '', name, formik }) => (
-  <FormControl mt={2}>
+export const InputForm = ({ type = 'text', placeholder = '', name, formik, ...rest }) => (
+  <FormControl
+    {...rest}
+    mt={2}
+  >
     <Input
       type={type}
       name={name}
