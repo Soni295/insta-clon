@@ -4,7 +4,7 @@ import { CreatePostBtn } from '../Btns/CreatePostBtn'
 
 export const NavBar = () => {
   const { user } = useSelector(state => state)
-  if(!user.user) return null
+  if(!user.name) return null
 
   const height = [20, 30, 40, 50]
 

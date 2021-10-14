@@ -25,7 +25,7 @@ export const LogInForm = () => {
   const onSubmit = values => dispatch(submitLogIn(values))
   const formik = useFormik({initialValues, validationSchema, onSubmit})
 
-  if(user.user){
+  if(user.name){
     return <Redirect to={PATHS.HOME} />
   }
 

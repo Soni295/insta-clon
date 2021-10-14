@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { submitLogIn } from './reducers'
-import { getLocalStorage } from '../../utils/getLocalStorage'
+import { getLocalStorage, setLocalStorage } from '../../utils/localStorage'
 
 const initialState = {
-  user: getLocalStorage('user'),
+  name: getLocalStorage('name'),
+  token: null,
   status: 'idle',
   error: null
 }
@@ -17,8 +18,9 @@ export const userReducer = createSlice({
       state.status = 'loading';
     },
     [submitLogIn.fulfilled](state, { payload }){
-      state.user = payload.user
-      localStorage.setItem('user', JSON.stringify(payload.user))
+      state.name = payload.user
+      state.token = payload.token
+      setLocalStorage('name', payload.user)
       state.status = 'succeeded';
     },
     [submitLogIn.rejected](state, action){

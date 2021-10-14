@@ -30,7 +30,7 @@ export const ModalCreatePost = ({isOpen, onClose}) => {
   });
 
   useEffect(()=> {
-    formik.setFieldValue('user', user.user)
+    formik.setFieldValue('user', user.name)
   }, [])
 
   return(

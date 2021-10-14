@@ -3,3 +3,7 @@ export const getLocalStorage = item => (
   ? JSON.parse(localStorage.getItem(item))
   : null
 )
+
+export const setLocalStorage = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value))
+}

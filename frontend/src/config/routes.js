@@ -7,7 +7,7 @@ export const Route = route => {
 
   const { user } = useSelector(state => state)
 
-  if(route.needLogged && !user.user){
+  if(route.needLogged && !user.name){
     return <Redirect to={PATHS.LOGIN} />
   }
 
