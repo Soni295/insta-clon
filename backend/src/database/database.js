@@ -10,10 +10,10 @@ export const pool = mariadb.createPool({
   port: process.env.DB_PORT
 })
 
-export const getConnection = async(query) => {
+export const getConnection = async(query, values=[] ) => {
   try {
     const connection = await pool.getConnection()
-    return connection.query(query)
+    return await connection.query(query, values)
   } catch (error) {
     console.log(error)
   }
