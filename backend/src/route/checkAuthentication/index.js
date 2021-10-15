@@ -1,14 +1,5 @@
 import jwt from 'jsonwebtoken'
 
-const verifyToken = token => {
-  let decored = null
-  try {
-    decored = jwt.verify(token, process.env.SECRECT)
-  }
-  catch(e) { }
-  return decored
-}
-
 export const checkAuthentication = (req, res, next) => {
   const authorization = req.get('authorization')
 
@@ -18,11 +9,9 @@ export const checkAuthentication = (req, res, next) => {
     token = authorization.substr(7)
   }
 
-  const decoreToken = verifyToken(token)
+  decoredToken = jwt.verify(token, process.env.SECRECT)
 
-  if(!token || !decoreToken){
-    return res.status(401).json({msg: 'token is missing or invalid'})
-  }
+
   res.locals.token = decoreToken
 
   next()
