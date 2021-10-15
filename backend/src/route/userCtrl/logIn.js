@@ -24,7 +24,7 @@ export const logIn = async(req, res) => {
 
   const userForToken = {
     id: data[`${USERS.id}`],
-    user: data[`${USERS.username}`],
+    user: data[`${USERS.userName}`],
   }
 
   const token = jwt.sign(userForToken, process.env.SECRECT)
