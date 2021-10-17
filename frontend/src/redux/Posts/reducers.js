@@ -11,8 +11,8 @@ export const getPosts = createAsyncThunk('postsReducer/getPost',
 */
 
 export const createPost = createAsyncThunk('postsReducer/createPost',
-  async (user, post) => {
-    const res = createPostRequest(user, post)
+  async ({token, post}) => {
+    const res = createPostRequest(token, post)
     return res.data
   }
 )

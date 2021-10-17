@@ -1,7 +1,7 @@
 import { useDisclosure } from "@chakra-ui/react"
 import { AddIcon } from '@chakra-ui/icons'
 
-import { ModalCreatePost } from '../Modal/ModalCreatePost'
+import { ModalCreatePost } from '../Modal/ModalCreatePost/index'
 
 export const CreatePostBtn = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()

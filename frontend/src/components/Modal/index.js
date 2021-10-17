@@ -24,6 +24,7 @@ export const Modal = ({isOpen, onClose, children, handleClick}) => {
         <ModalFooter>
           <Button
             colorScheme="blue"
+            type='submit'
             onClick={handleClick}
           >
             Send
