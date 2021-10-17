@@ -25,7 +25,8 @@ export const userReducer = createSlice({
       state.status = 'loading';
     },
     [submitLogIn.fulfilled](state, { payload }){
-      const { user: name, token } = payload
+      let { user: name } = payload
+      let token = 'Bearer ' + payload.token
       state.name = name
       state.token = token
       setLocalStorage('session', {name, token})
