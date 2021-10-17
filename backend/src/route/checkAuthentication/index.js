@@ -9,9 +9,7 @@ export const checkAuthentication = (req, res, next) => {
     token = authorization.substr(7)
   }
 
-  decoredToken = jwt.verify(token, process.env.SECRECT)
-
-
+  const decoreToken = jwt.verify(token, process.env.SECRECT)
   res.locals.token = decoreToken
 
   next()
