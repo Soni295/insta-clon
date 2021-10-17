@@ -1,6 +1,5 @@
 import supertest from 'supertest'
-import { app } from '../../index'
-
+import app from '../../app'
 const request = supertest(app)
 
 describe('Post /LogIn', () => {
@@ -26,6 +25,7 @@ describe('Post /LogIn', () => {
   })
 })
 
+
 describe('Post /LogIn', () => {
   it('responds with Login failed and status 401', done => {
     request
@@ -34,7 +34,7 @@ describe('Post /LogIn', () => {
       .send({user: 'arturo', password: 'error12345'})
       .expect('Content-Type', /json/)
       .expect(401)
-      .end((err, res) => {
+      .end((err) => {
         if (err) return done(err)
         return done()
       })

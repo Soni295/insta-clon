@@ -10,6 +10,7 @@ export const checkAuthentication = (req, res, next) => {
   }
 
   const decoreToken = jwt.verify(token, process.env.SECRECT)
+
   res.locals.token = decoreToken
 
   next()

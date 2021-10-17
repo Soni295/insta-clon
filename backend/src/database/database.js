@@ -1,6 +1,8 @@
 import mariadb from 'mariadb'
+
 import { config as activeVariablesEnvironment } from 'dotenv'
 activeVariablesEnvironment()
+
 
 export const pool = mariadb.createPool({
   host: process.env.DB_HOST,

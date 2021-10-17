@@ -7,7 +7,8 @@ const ERROR_HANDLERS = {
 }
 
 export const handleErrors = (err, req, res, next) => {
-  console.error(err.name)
+  //console.error(err.name)
+  console.log(err)
   const handle = ERROR_HANDLERS[err.name] || ERROR_HANDLERS.defaultError
   handle(res, err)
 }
