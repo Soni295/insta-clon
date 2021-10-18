@@ -2,13 +2,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Image } from "@chakra-ui/react"
 import { useFormik } from 'formik';
 
-import { InputForm } from '../../InputForm';
-import { Modal } from '../index';
-import { ImgBtn } from '../../Btns/ImgBtn';
 import { validationSchema, handleSubmit, initialValues } from './setFormik'
+import { Modal } from '../index';
+import { InputForm } from '../../InputForm';
+import { ImgBtn } from '../../Btns/ImgBtn';
+import { useConvertFileToImg } from "../../../hooks/useConvertFileToImg";
 
 export const ModalCreatePost = ({isOpen, onClose}) => {
-
   const dispatch = useDispatch()
   const { token } = useSelector(state => state.user)
 
@@ -18,7 +18,7 @@ export const ModalCreatePost = ({isOpen, onClose}) => {
     initialValues, validationSchema, onSubmit
   });
 
-  console.log(formik.values)
+  const img = useConvertFileToImg(formik.values.img)
 
   return(
     <Modal
@@ -30,7 +30,7 @@ export const ModalCreatePost = ({isOpen, onClose}) => {
         h='400px'
         w='100%'
         objectFit='cover'
-        src={formik.values.img}
+        src={img}
         mb='30px'
       />
       <ImgBtn
