@@ -1,15 +1,24 @@
-export const createPost = async(req, res) => {
-  const { id: userID } = res.locals.token
+import { USERS, POSTS } from '../../database/tables.js'
+import { getConnection } from '../../database/database.js'
 
-  console.log(req.file)
-  console.log(req.body)
-  console.log(res.locals.token)
-  console.log(userID)
-  //console.log(req.body)
-  /*
-  if(!token?.id){
-    return res.status(401).json({msg: 'token is missing or invalid'})
+export const createPost = async(req, res) => {
+
+  const sql = `
+    INSERT INTO ${POSTS.name}
+    (${USERS.id}, ${POSTS.file}, ${POSTS.desc})
+    VALUES (?, ?, ?)`
+
+  const { id: userID } = res.locals.token
+  const fileName = req.file.filename
+  const description = req.body.description
+
+  const values = [userID, fileName, description]
+
+  const data = await getConnection(sql, values)
+
+  if(!data) {
+    return res.status(500).json({msg: 'Error when created post'})
   }
-  */
+
   return res.status(200).json({msg: 'Post created Successfully'})
 }

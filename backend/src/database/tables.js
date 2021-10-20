@@ -5,3 +5,10 @@ export const USERS = {
   password: 'Password',
   email: 'email'
 }
+export const POSTS = {
+  name: 'posts',
+  id: 'post_id',
+  file: 'file_name',
+  desc: 'description',
+  creationTime: 'creation_time'
+}
