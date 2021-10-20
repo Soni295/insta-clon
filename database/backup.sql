@@ -25,12 +25,16 @@ DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `post_id` int(200) NOT NULL AUTO_INCREMENT,
   `user_id` int(200) DEFAULT NULL,
+  `file_name` varchar(50) NOT NULL,
+  `description` varchar(800) DEFAULT '',
+  `creation_time` DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`post_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+-- INSERT INTO `posts` (`user_id`, `file_name`, `description`) VALUES (1, 'example.jpg', 'hola');
 --
 -- Dumping data for table `posts`
 --
