@@ -9,7 +9,7 @@ export const checkAuthentication = (req, res, next) => {
     token = authorization.substr(7)
   }
 
-  const decoreToken = jwt.verify(token, process.env.SECRECT)
+  const decoreToken = jwt.verify(token, process.env.PRIVATE_TOKEN_KEY)
 
   res.locals.token = decoreToken
 

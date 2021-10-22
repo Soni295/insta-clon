@@ -1,6 +1,3 @@
-import { config as activeVariablesEnvironment } from 'dotenv'
-activeVariablesEnvironment()
-
 import express from 'express'
 import cors from 'cors'
 import { route } from './route/index.js'
