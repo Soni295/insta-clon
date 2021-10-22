@@ -25,3 +25,13 @@ services:
       MYSQL_ROOT_PASSWORD: $DB_PASSWORD
     volumes:
       - ./database/volumes:/var/lib/mysql
+  client:
+    depends_on:
+      - server
+    container_name: client
+    restart: unless-stopped
+    build: ./frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/app

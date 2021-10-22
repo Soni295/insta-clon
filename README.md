@@ -14,19 +14,14 @@ $ docker-compose up -d
 
 update backup(in quarter console)
 ```bash
-$ cd database/commands
 $ docker ps
-$ ./restore.sh <CONTAINER ID mariadb>
+$ ./database/restore.sh <CONTAINER ID mariadb>
 ```
 
-install frontend dependecies and start(in second console)
+now go to the browser and connect with
 ```bash
-$ cd ../frontend
-$ npm i
-$ npm start
+http://localhost:3000/
 ```
-
-
 
 # user
 ```js
@@ -35,4 +30,3 @@ $ npm start
   password: "123456"
 }
 ```
-

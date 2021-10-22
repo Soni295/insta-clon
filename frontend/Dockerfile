@@ -4,4 +4,5 @@ COPY package*.json ./
 COPY yarn.lock ./
 RUN npm i
 COPY . .
-CMD ["npm", "run", "start"]
+EXPOSE 3000
+CMD ["npm", "start"]
