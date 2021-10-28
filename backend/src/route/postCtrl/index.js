@@ -1,6 +1,6 @@
 import { USERS, POSTS } from '../../database/tables.js'
 import { getConnection } from '../../database/database.js'
-
+import { MockPost } from './mockGetPostForMainPage.js'
 export const createPost = async(req, res) => {
 
   const sql = `
@@ -21,4 +21,9 @@ export const createPost = async(req, res) => {
   }
 
   return res.status(200).json({msg: 'Post created Successfully'})
+}
+
+
+export const getPostForMainPage = (req, res) => {
+  res.status(200).json({res: MockPost})
 }
