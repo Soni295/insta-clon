@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-//import { submitLogIn } from './reducers'
-import { createPost } from './reducers'
+import { createPost, getPostsForMainReducer } from './reducers'
+import { useGenerateKey } from '../../hooks/useGenerateKey'
 
 const initialState = {
   data: [],
@@ -13,6 +13,20 @@ export const postsReducer = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    [getPostsForMainReducer.pending](state){
+      state.status = 'loading';
+    },
+    [getPostsForMainReducer.fulfilled](state, { payload }){
+      const data = useGenerateKey(payload.res)
+      state.data = data
+      state.status = 'succeeded';
+    },
+    [getPostsForMainReducer.rejected](state, action){
+      state.status = 'failed';
+      state.error = action.error.message;
+    },
+
+
     [createPost.pending](state){
       state.status = 'loading';
     },

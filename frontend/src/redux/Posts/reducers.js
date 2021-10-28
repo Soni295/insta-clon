@@ -1,14 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { createPostRequest } from '../../services/createPosts'
+import { createPostRequest, getAllPostsRequest } from '../../services/Post'
 
-/*
-export const getPosts = createAsyncThunk('postsReducer/getPost',
-  async (user) => {
-    const res = await getAllPosts(user)
+export const getPostsForMainReducer = createAsyncThunk('postsReducer/getPost',
+  async (token) => {
+    const res = await getAllPostsRequest(token)
     return res.data
 })
 
-*/
+export const getPostsForMain = dispatch => ({
+  getPostsForMain: token => dispatch(getPostsForMainReducer(token))
+})
 
 export const createPost = createAsyncThunk('postsReducer/createPost',
   async ({token, post}) => {

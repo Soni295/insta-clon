@@ -1,42 +1,25 @@
+import { useEffect } from 'react'
+import { connect } from 'react-redux';
 import { VStack } from "@chakra-ui/react"
+
 import { Card } from "../Cards/Feed"
-import { useGenerateKey } from "../../hooks/useGenerateKey"
+import { getPostsForMain } from '../../redux/Posts/reducers';
 
-const data1 = [
-  {
-    user: {
-      name: 'example',
-      img: 'https://bit.ly/sage-adebayo'
-    },
-    img: 'https://bit.ly/sage-adebayo',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ipsa eos dolorum reiciendis. Iure sequi, voluptates velit doloribus reiciendis consequatur debitis dolores nam ab delectus iste error? Minima, necessitatibus nihil.'
-  },
-  {
-    user: {
-      name: 'example',
-      img: 'https://bit.ly/sage-adebayo'
-    },
-    img: 'https://bit.ly/sage-adebayo',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ipsa eos dolorum reiciendis. Iure sequi, voluptates velit doloribus reiciendis consequatur debitis dolores nam ab delectus iste error? Minima, necessitatibus nihil.'
-  },
-  {
-    user: {
-      name: 'example',
-      img: 'https://bit.ly/sage-adebayo'
-    },
-    img: 'https://bit.ly/sage-adebayo',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ipsa eos dolorum reiciendis. Iure sequi, voluptates velit doloribus reiciendis consequatur debitis dolores nam ab delectus iste error? Minima, necessitatibus nihil.'
-  },
-]
+const mapStateToProps = state => {
+  return {
+    token: state.user.token,
+    posts: state.posts
+  }
+}
 
-export const Publications = () => {
-  const data = useGenerateKey(data1)
+export const Publications = connect(mapStateToProps, getPostsForMain)
+  (({token, posts, getPostsForMain})=> {
+
+  useEffect(() => { getPostsForMain(token) }, [])
 
   return(
     <VStack>
-      {data.map(pub =>
-        <Card {...pub} />
-      )}
+      {posts.data.map(pub => <Card {...pub} /> )}
     </VStack>
   )
-}
+})
