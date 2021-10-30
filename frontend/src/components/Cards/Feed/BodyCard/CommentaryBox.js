@@ -1,5 +1,6 @@
 import { Box, Text, HStack } from "@chakra-ui/react"
-import { useGenerateKey } from "../../../../hooks/useGenerateKey"
+
+import { generateKeysForArr } from "../../../../utils/generateKey"
 import { useOnOff } from "../../../../hooks/useOnOff"
 
 class Commen {
@@ -48,7 +49,7 @@ export const ShowMoreCommentaries = ({countCommentaries, show, turnShow, hover})
 
 
 export const CommentaryBox = ({commentariesTemp=data}) => { ///  >---------------------- Cambiar pa
-  const commentaries = useGenerateKey(commentariesTemp)
+  const commentaries = generateKeysForArr(commentariesTemp)
   const [show, turnShow] = useOnOff()
   const data = show ? lastXItems(commentaries, 2): commentariesTemp
 

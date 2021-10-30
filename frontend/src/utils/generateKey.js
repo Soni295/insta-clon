@@ -6,7 +6,7 @@ const randomLetter = () => {
   return randomNumber.toString(36)
 }
 
-const generateStr = countOfLetters => {
+export const generateKey = (countOfLetters=11) => {
   let word = ''
 
   for(let i = 0; i < countOfLetters; i++) {
@@ -16,9 +16,8 @@ const generateStr = countOfLetters => {
   return word
 }
 
-export const useGenerateKey = arr => (
+export const generateKeysForArr = arr => (
   arr.map(item => ({
-    ...item,
-    key: generateStr(11)
+    ...item, key: generateKey()
   }))
 )
