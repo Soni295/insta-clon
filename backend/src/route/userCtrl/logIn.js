@@ -1,4 +1,4 @@
-import { USERS } from '../../database/tables.js'
+import { usersSql, USERS } from '../../database/tables/users.js'
 import { getConnection } from '../../database/database.js'
 import jwt from 'jsonwebtoken'
 
@@ -9,12 +9,7 @@ export const checkPassword = (pass, passDB) => {
 export const logIn = async(req, res) => {
   const { user, password } = req.body
 
-  const sql = `
-    SELECT *
-    FROM ${USERS.name}
-    WHERE ${USERS.email} = ?
-    OR ${USERS.userName} = ?
-  `
+  const sql = usersSql.getByName
   const [data] = await getConnection(sql, [user, user])
   const passDB = data[`${USERS.password}`]
 

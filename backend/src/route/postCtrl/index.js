@@ -1,18 +1,15 @@
-import { USERS, POSTS } from '../../database/tables.js'
+import { publicationsSql } from '../../database/tables/publications.js'
 import { getConnection } from '../../database/database.js'
-import { MockPost } from './mockGetPostForMainPage.js'
+
 export const createPost = async(req, res) => {
 
-  const sql = `
-    INSERT INTO ${POSTS.name}
-    (${USERS.id}, ${POSTS.file}, ${POSTS.desc})
-    VALUES (?, ?, ?)`
+  const sql = publicationsSql.create
 
   const { id: userID } = res.locals.token
-  const fileName = req.file.filename
-  const description = req.body.description
+  const { filename } = req.file
+  const { description } = req.body
 
-  const values = [userID, fileName, description]
+  const values = [userID, filename, description]
 
   const data = await getConnection(sql, values)
 
@@ -24,6 +21,8 @@ export const createPost = async(req, res) => {
 }
 
 
-export const getPostForMainPage = (req, res) => {
-  res.status(200).json({res: MockPost})
+export const getPostForMainPage = async(_, res) => {
+  const sql = publicationsSql.getAll
+  const data = await getConnection(sql)
+  res.status(200).json({data})
 }
