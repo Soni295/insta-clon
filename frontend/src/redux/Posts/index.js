@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { createPost, getPostsForMainReducer } from './reducers'
-import { useGenerateKey } from '../../hooks/useGenerateKey'
+import { setPostsArray } from '../../utils/convertsData'
 
 const initialState = {
   data: [],
@@ -17,7 +17,7 @@ export const postsReducer = createSlice({
       state.status = 'loading';
     },
     [getPostsForMainReducer.fulfilled](state, { payload }){
-      const data = useGenerateKey(payload.res)
+      const data = setPostsArray(payload.data)
       state.data = data
       state.status = 'succeeded';
     },
